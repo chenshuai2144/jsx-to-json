@@ -5,17 +5,127 @@ hero:
   actions:
     - text: Getting Started
       link: /components
-features:
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
-    title: Feature 1
-    desc: Balabala
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/d60657df-0822-4631-9d7c-e7a869c2f21c/k79dmz3q_w126_h126.png
-    title: Feature 2
-    desc: Balabala
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
-    title: Feature 3
-    desc: Balabala
+
 footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
 ---
 
-## Hello jsxToJson!
+# Hello jsxToJson!
+
+## Getting Started
+
+Install dependencies,
+
+```bash
+npm i @chenshuai2144/jsx-to-json
+```
+
+### jsxToJson
+
+```tsx | pure
+import { jsxToJson } form '@chenshuai2144/jsx-to-json'
+
+
+const code = `
+
+<ProForm>
+    formRef={formRef}
+    params={{ id: '100' }}
+    formKey="base-form-use-demo"
+    request={async () => {
+      await waitTime(100);
+      return {
+        name: '蚂蚁设计有限公司',
+        useMode: 'chapter',
+      };
+    }}
+    autoFocusFirstInput
+  >
+    <ProFormMoney
+      label="不显示符号"
+      name="amount0"
+      fieldProps={{
+        moneySymbol: false,
+      }}
+      locale="en-US"
+      initialValue={22.22}
+      min={0}
+      width="lg"
+    />
+</ProForm>`
+
+
+console.log(jsxToJson(code).at(0).code);
+
+// <BetaSchemaForm
+//   layoutType="ProForm"
+//   columns={[
+//     {
+//       valueType: "money",
+//       label: "不显示符号",
+//       name: "amount0",
+//       fieldProps: {
+//         moneySymbol: false,
+//       },
+//       locale: "en-US",
+//       initialValue: 22.22,
+//       min: 0,
+//       width: "lg",
+//    }]
+// />
+
+```
+
+### jsonToJsx
+
+```tsx | pure
+import { jsonToJsx } form '@chenshuai2144/jsx-to-json'
+
+
+const code = `
+<BetaSchemaForm
+  layoutType="ProForm"
+  columns={[
+    {
+      valueType: "money",
+      label: "不显示符号",
+      name: "amount0",
+      fieldProps: {
+        moneySymbol: false,
+      },
+      locale: "en-US",
+      initialValue: 22.22,
+      min: 0,
+      width: "lg",
+   }]
+/>
+`
+
+
+console.log(jsonToJsx(code).at(0).code);
+// <ProForm>
+//     formRef={formRef}
+//     params={{ id: '100' }}
+//     formKey="base-form-use-demo"
+//     request={async () => {
+//       await waitTime(100);
+//       return {
+//         name: '蚂蚁设计有限公司',
+//         useMode: 'chapter',
+//       };
+//     }}
+//     autoFocusFirstInput
+//   >
+//     <ProFormMoney
+//       label="不显示符号"
+//       name="amount0"
+//       fieldProps={{
+//         moneySymbol: false,
+//       }}
+//       locale="en-US"
+//       initialValue={22.22}
+//       min={0}
+//       width="lg"
+//     />
+// </ProForm>
+
+```
