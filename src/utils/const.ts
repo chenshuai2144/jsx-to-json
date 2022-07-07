@@ -23,6 +23,7 @@ export const VALUE_TYPE_TO_FORM_MAP = {
   dateRange: 'ProFormDateRangePicker',
   dateTimeRange: 'ProFormDateTimeRangePicker',
   time: 'ProFormTimePicker',
+  group: 'ProForm.Group',
   timeRange: 'ProFormTimeRangePicker',
   select: 'ProFormSelect',
   checkbox: 'ProFormCheckbox.Group',
@@ -42,6 +43,7 @@ export const VALUE_TYPE_TO_FORM_MAP = {
   cascader: 'ProFormCascader',
   treeSelect: 'ProFormTreeSelect',
   color: 'ProFormColorPicker',
+  dependency: 'ProFormDependency',
 };
 
 export const FORM_TO_VALUE_TYPE_MAP = Object.keys(VALUE_TYPE_TO_FORM_MAP)

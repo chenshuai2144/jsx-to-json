@@ -14,6 +14,7 @@ export const JsxToJson: React.FC<{
   const srcCode = props.jsx;
   const [code, setCode] = useState('');
   useEffect(() => {
+    if (!props.jsx) return;
     setCode(
       jsxToJson(props.jsx)
         .map((item) => item.code)
@@ -40,6 +41,7 @@ export const JsonToJsx: React.FC<{
 }> = (props) => {
   const [code, setCode] = useState('');
   useEffect(() => {
+    if (!props.json) return;
     setCode(
       jsonToJsx(props.json)
         .map((item) => item.code)
